@@ -12,10 +12,9 @@ func TestModuleGraph_Parse(t *testing.T) {
 		reader io.Reader
 	}
 	tests := []struct {
-		name    string
-		args    args
-		want    []byte
-		wantErr bool
+		name string
+		args args
+		want []byte
 	}{
 		{
 			name: "full",
@@ -50,11 +49,11 @@ node [shape=box];
 		t.Run(tt.name, func(t *testing.T) {
 			moduleGraph := NewModuleGraph(tt.args.reader)
 			moduleGraph.Parse()
-			for k, v := range moduleGraph.ItemMap {
+			for k, v := range moduleGraph.Mods {
 				fmt.Println(v, k)
 			}
 
-			for k, v := range moduleGraph.RelationMap {
+			for k, v := range moduleGraph.Dependencies {
 				fmt.Println(k)
 				fmt.Println(v)
 				fmt.Println()

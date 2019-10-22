@@ -28,7 +28,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	if info.Mode()&os.ModeCharDevice != 0 {
+	if info.Mode()&os.ModeNamedPipe == 0 {
 		fmt.Println("command err: command is intended to work with pipes.")
 		PrintUsage()
 		os.Exit(1)
