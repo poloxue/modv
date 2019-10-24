@@ -1,4 +1,4 @@
- [本文](http://poloxue.com/go/go-module-relationship-visible-tool)首发于[我的博客](http://poloxue.com)，如果觉得有用，欢迎点赞收藏，让更多的朋友看到。
+ > [本文](http://poloxue.com/go/go-module-relationship-visible-tool)首发于[我的博客](http://poloxue.com)，如果觉得有用，欢迎点赞收藏，让更多的朋友看到。
 
 最近，我开发了一个非常简单的小工具，总的代码量 200 行不到。今天，简单介绍下它。这是个什么工具呢？它是一个用于可视化展示 Go Module 依赖关系的工具。
 
