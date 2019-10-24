@@ -10,6 +10,9 @@ import (
 )
 
 var graphTemplate = `digraph {
+{{- if eq .direction "horizontal" -}}
+rankdir=LR;
+{{ end -}}
 node [shape=box];
 {{ range $mod, $modId := .mods -}}
 {{ $modId }} [label="{{ $mod }}"];
@@ -54,6 +57,9 @@ func (m *ModuleGraph) Parse() error {
 		relation := bytes.Split(relationBytes, []byte(" "))
 		mod, depMod := strings.TrimSpace(string(relation[0])), strings.TrimSpace(string(relation[1]))
 
+		mod = strings.Replace(mod, "@", "\n", 1)
+		depMod = strings.Replace(depMod, "@", "\n", 1)
+
 		modId, ok := m.Mods[mod]
 		if !ok {
 			modId = serialID
@@ -82,9 +88,15 @@ func (m *ModuleGraph) Render(w io.Writer) error {
 		return fmt.Errorf("templ.Parse: %v", err)
 	}
 
+	var direction string
+	if len(m.Dependencies) > 15 {
+		direction = "horizontal"
+	}
+
 	if err := templ.Execute(w, map[string]interface{}{
 		"mods":         m.Mods,
 		"dependencies": m.Dependencies,
+		"direction":    direction,
 	}); err != nil {
 		return fmt.Errorf("templ.Execute: %v", err)
 	}
