@@ -10,9 +10,9 @@ func PrintUsage() {
 	fmt.Printf("\nUsages:\n\n")
 	switch runtime.GOOS {
 	case "darwin":
-		fmt.Printf("\tgo mod graph | modv | dot -T png | open -f -a /Applications/Preview.app")
+		fmt.Printf("\tgo mod graph | modv | dot -T svg | open -f -a /System/Applications/Preview.app")
 	case "linux":
-		fmt.Printf("\tgo mod graph | modv | dot -T png | display")
+		fmt.Printf("\tgo mod graph | modv | dot -T svg -o /tmp/modv.svg | xdg-open /tmp/modv.svg")
 	case "windows":
 		fmt.Printf("\tgo mod graph | modv | dot -T png -o graph.png; start graph.png")
 	}
