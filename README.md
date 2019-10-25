@@ -35,13 +35,13 @@ $ go get github.com/poloxue/modv
 Try the following.
 
 ```
-$ go mod graph | modv | dot -T svg | open -f -a /Applications/Preview.app
+$ go mod graph | modv | dot -T png | open -f -a /Applications/Preview.app
 ```
 
 If error accured, for eaxmple，`FSPathMakeRef(/Applications/Preview.app) failed with error -43.`，try the command:
 
 ```
-$ go mod graph | modv | dot -T svg | open -f -a /System/Applications/Preview.app
+$ go mod graph | modv | dot -T png | open -f -a /System/Applications/Preview.app
 ```
 
 ## Windows
@@ -66,12 +66,12 @@ $ go mod graph | modv | dot -T svg -o graph.svg; start graph.svg
 
 # Demo
 
-If MacOS
+If MacOS, tye the following:
 
 ```bash
 $ git clone https://github.com/poloxue/testmod
 $ cd testmod
-$ go mod graph | modv | dot -T svg | open -f -a /System/Applications/Preview.app
+$ go mod graph | modv | dot -T png | open -f -a /System/Applications/Preview.app
 ```
 
 Output:
