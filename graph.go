@@ -74,11 +74,7 @@ func (m *ModuleGraph) Parse() error {
 			serialID += 1
 		}
 
-		if _, ok := m.Dependencies[modId]; ok {
-			m.Dependencies[modId] = append(m.Dependencies[modId], depModId)
-		} else {
-			m.Dependencies[modId] = []int{depModId}
-		}
+		m.Dependencies[modId] = append(m.Dependencies[modId], depModId)
 	}
 }
 
